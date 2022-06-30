@@ -1,0 +1,56 @@
+.mainaside {
+   background-image: url('../../assets/background/background-login.png');
+   height: 961px;
+   width: 80%;
+   padding: 70px 100px;
+}
+
+.titleaside {
+   font-weight: 700;
+   font-size: 29px;
+   line-height: 40px;
+   color: #ffffff;
+}
+
+.secondtitleaside {
+   padding-top: 30px;
+   font-weight: 700;
+   font-size: 24px;
+   line-height: 33px;
+   color: #ffffff;
+}
+
+.descaside {
+   padding-top: 50px;
+   font-weight: 400;
+   font-size: 16px;
+   line-height: 23px;
+   color: rgba(255, 255, 255, 0.8);
+}
+
+@media (max-width: 834px) {
+   .mainaside {
+      width: 100%;
+      height: 300px;
+      padding: 10%;
+      background-size: cover;
+   }
+
+   .mainaside div {
+      display: none !important;
+   }
+
+   .descaside {
+      padding-top: 25px;
+   }
+}
+
+@media (max-width: 400px) {
+   .mainaside {
+      height: 370px;
+   }
+
+   .signupbutton {
+      margin-top: 60px;
+   }
+}

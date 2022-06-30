@@ -1,0 +1,23 @@
+.container {
+   display: flex;
+   justify-content: space-between;
+   padding: 25px 150px;
+   background-color: #6379f4;
+}
+
+.copyright {
+   color: #efefef;
+}
+
+.mainLeft {
+   display: flex;
+   column-gap: 30px;
+}
+
+.phonenumber {
+   color: #efefef;
+}
+
+.email {
+   color: #efefef;
+}
