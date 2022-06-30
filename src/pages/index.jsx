@@ -15,10 +15,12 @@ export default function Home() {
                      <p className={style.title}>el-wallet</p>
                   </div>
                   <div className={style.clickbutton}>
-                     <Link href="/auth">
+                     <Link href="/login">
                         <button className={style.login}>Login</button>
                      </Link>
-                     <button className={style.login}>Sign Up</button>
+                     <Link href="/signup">
+                        <button className={style.login}>Sign Up</button>
+                     </Link>
                   </div>
                </navbar>
                <section className={style.maincontentinfo}>

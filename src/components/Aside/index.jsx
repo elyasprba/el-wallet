@@ -1,11 +1,14 @@
 import styles from './aside.module.css';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Login() {
    return (
       <>
          <aside className={styles.mainaside}>
-            <h2 className={styles.titleaside}>el-wallet</h2>
+            <Link href="/">
+               <h2 className={styles.titleaside}>el-wallet</h2>
+            </Link>
             <div>
                <Image src={require('../../assets/vector/phone-login.png')} alt="img" />
             </div>

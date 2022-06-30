@@ -44,6 +44,19 @@
    color: rgba(58, 61, 66, 0.6);
 }
 
+.forgotpassword {
+   text-align: end;
+   font-weight: 600;
+   font-size: 14px;
+   line-height: 24px;
+   color: rgba(58, 61, 66, 0.8);
+   cursor: pointer;
+}
+
+.forgotpassword:hover {
+   color: #6379f4;
+}
+
 .signupbutton {
    margin-top: 100px;
    border: none;
@@ -65,7 +78,7 @@
 
 .descsignup {
    margin-top: 60px;
-   font-weight: 400;
+   font-weight: 700;
    font-size: 16px;
    line-height: 23px;
    text-align: center;
