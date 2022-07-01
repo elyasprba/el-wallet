@@ -8,7 +8,7 @@ import reducers from '../redux/reducer/index';
 const persistConfig = {
    key: 'root',
    storage,
-   whitelist: ['loginReducer'],
+   whitelist: ['loginReducer', 'registerReducer'],
 };
 
 // const reducers = {

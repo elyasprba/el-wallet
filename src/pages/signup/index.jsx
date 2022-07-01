@@ -5,7 +5,8 @@ import Layout from '../../components/Layout';
 import Aside from '../../components/Aside';
 import Link from 'next/link';
 import axios from 'axios';
-import { Modal, Button } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+import { registerAuthAction } from '../../redux/actionCreator/register';
 
 export default function Signup() {
    const [showPass, setShowPass] = useState(false);
@@ -14,19 +15,16 @@ export default function Signup() {
    const [email, setEmail] = useState('');
    const [password, setPassword] = useState('');
 
-   const register = async () => {
-      try {
-         const body = {
-            firstName,
-            lastName,
-            email,
-            password,
-         };
-         const result = await axios.post(`https://fazzpay.herokuapp.com/auth/register`, body);
-         alert(result.data.msg);
-      } catch (error) {
-         console.log(error);
-      }
+   const dispatch = useDispatch();
+
+   const register = () => {
+      const body = {
+         firstName,
+         lastName,
+         email,
+         password,
+      };
+      dispatch(registerAuthAction(body));
    };
 
    return (
@@ -42,7 +40,7 @@ export default function Signup() {
                      <Person height={30} width={30} />
                      <input
                         type="text"
-                        id="name"
+                        id="lastname"
                         placeholder="Enter your firstname"
                         onChange={(e) => {
                            setFirstName(e.target.value);
@@ -53,7 +51,7 @@ export default function Signup() {
                      <Person height={30} width={30} />
                      <input
                         type="text"
-                        id="name"
+                        id="firstname"
                         placeholder="Enter your lastname"
                         onChange={(e) => {
                            setLastName(e.target.value);
@@ -64,7 +62,7 @@ export default function Signup() {
                      <Envelope height={30} width={30} />
                      <input
                         type="text"
-                        id="name"
+                        id="email"
                         placeholder="Enter your e-mail"
                         onChange={(e) => {
                            setEmail(e.target.value);
@@ -75,7 +73,7 @@ export default function Signup() {
                      <Lock height={27} width={30} />
                      <input
                         type={`${showPass ? 'text' : 'password'}`}
-                        id="name"
+                        id="password"
                         placeholder="Create your password"
                         onChange={(e) => {
                            setPassword(e.target.value);

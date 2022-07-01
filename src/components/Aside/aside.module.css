@@ -1,8 +1,8 @@
 .mainaside {
    background-image: url('../../assets/background/background-login.png');
-   height: 961px;
    width: 80%;
    padding: 70px 100px;
+   background-size: cover;
 }
 
 .titleaside {

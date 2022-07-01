@@ -1,17 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import styles from './login.module.css';
 import { Envelope, Lock, Eye, EyeSlashFill } from 'react-bootstrap-icons';
 import Layout from '../../components/Layout';
 import Aside from '../../components/Aside';
 import Link from 'next/link';
-import axios from 'axios';
 import { loginAuthAction } from '../../redux/actionCreator/login';
 
 export default function Signup() {
    const [email, setEmail] = useState('');
    const [password, setPassword] = useState('');
    const [showPass, setShowPass] = useState(false);
+   const [msgSuccess, setMsgSuccess] = useState('');
+   const [msgError, setMsgError] = useState('');
 
    const dispatch = useDispatch();
 
@@ -20,8 +21,18 @@ export default function Signup() {
          email,
          password,
       };
-      dispatch(loginAuthAction(body));
+      dispatch(loginAuthAction(body))
+         .then((result) => {
+            // console.log(result.data.msg);
+            setMsgSuccess(result.data.msg);
+         })
+         .catch((error) => {
+            // console.log(error.response.data.msg);
+            setMsgError(error.response.data.msg);
+         });
+      setShow(true);
    };
+
    return (
       <>
          <Layout title="Login" />
