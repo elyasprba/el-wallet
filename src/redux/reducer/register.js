@@ -1,14 +1,14 @@
 import { registerAuth, PENDING, FULFILLED, REJECTED } from '../actionCreator/actionString';
 
-const intialSatate = {
+const initialState = {
    registerData: {},
    userInfo: {},
    isLoading: false,
    isLoggedIn: false,
-   err: null,
+   err: false,
 };
 
-const registerReducer = (state = intialSatate, action) => {
+const registerReducer = (state = initialState, action) => {
    switch (action.type) {
       case registerAuth + PENDING:
          return { ...state, isLoading: true };

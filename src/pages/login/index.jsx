@@ -1,27 +1,26 @@
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import styles from './login.module.css';
 import { Envelope, Lock, Eye, EyeSlashFill } from 'react-bootstrap-icons';
 import Layout from '../../components/Layout';
 import Aside from '../../components/Aside';
 import Link from 'next/link';
 import axios from 'axios';
+import { loginAuthAction } from '../../redux/actionCreator/login';
 
 export default function Signup() {
    const [email, setEmail] = useState('');
    const [password, setPassword] = useState('');
    const [showPass, setShowPass] = useState(false);
 
-   const login = async () => {
-      try {
-         const body = {
-            email,
-            password,
-         };
-         const result = await axios.post(`https://fazzpay.herokuapp.com/auth/login`, body);
-         alert(result.data.msg);
-      } catch (error) {
-         console.log(error);
-      }
+   const dispatch = useDispatch();
+
+   const login = () => {
+      const body = {
+         email,
+         password,
+      };
+      dispatch(loginAuthAction(body));
    };
    return (
       <>

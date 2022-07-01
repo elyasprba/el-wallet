@@ -5,6 +5,7 @@ import Layout from '../../components/Layout';
 import Aside from '../../components/Aside';
 import Link from 'next/link';
 import axios from 'axios';
+import { Modal, Button } from 'react-bootstrap';
 
 export default function Signup() {
    const [showPass, setShowPass] = useState(false);

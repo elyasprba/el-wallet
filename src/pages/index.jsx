@@ -1,5 +1,5 @@
 import Layout from '../components/Layout';
-import style from '../styles/home.module.css';
+import style from '../styles/landingpage.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
 // import { ArrowLeftCircle, ArrowRightCircle } from 'react-bootstrap-icons';
