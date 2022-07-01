@@ -11,8 +11,8 @@ export default function Signup() {
    const [email, setEmail] = useState('');
    const [password, setPassword] = useState('');
    const [showPass, setShowPass] = useState(false);
-   const [msgSuccess, setMsgSuccess] = useState('');
-   const [msgError, setMsgError] = useState('');
+   // const [msgSuccess, setMsgSuccess] = useState('');
+   // const [msgError, setMsgError] = useState('');
 
    const dispatch = useDispatch();
 
@@ -23,14 +23,14 @@ export default function Signup() {
       };
       dispatch(loginAuthAction(body))
          .then((result) => {
-            // console.log(result.data.msg);
-            setMsgSuccess(result.data.msg);
+            console.log(result);
+            // setMsgSuccess(result.data.msg);
          })
          .catch((error) => {
             // console.log(error.response.data.msg);
-            setMsgError(error.response.data.msg);
+            // setMsgError(error.response.data);c
+            console.log(error);
          });
-      setShow(true);
    };
 
    return (

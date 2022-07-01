@@ -2,10 +2,9 @@ import { registerAuth, PENDING, FULFILLED, REJECTED } from '../actionCreator/act
 
 const initialState = {
    registerData: {},
-   userInfo: {},
    isLoading: false,
-   isLoggedIn: false,
    err: false,
+   msg: '',
 };
 
 const registerReducer = (state = initialState, action) => {
@@ -13,7 +12,7 @@ const registerReducer = (state = initialState, action) => {
       case registerAuth + PENDING:
          return { ...state, isLoading: true };
       case registerAuth + FULFILLED:
-         return { ...state, registerData: action.payload.data.data, isLoading: false };
+         return { ...state, registerData: action.payload, isLoading: false };
       case registerAuth + REJECTED:
          return { ...state, isLoading: false, err: action.payload };
       default:
