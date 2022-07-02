@@ -21,3 +21,9 @@
 .email {
    color: #efefef;
 }
+
+@media (max-width: 834px) {
+   .container {
+      padding: 25px 40px;
+   }
+}
