@@ -6,13 +6,13 @@ import { useSelector } from 'react-redux';
 
 export default function Navbar() {
    const selectUserId = useSelector((state) => state.loginReducer.loginData.id);
-   const selectTokenId = useSelector((state) => state.loginReducer.loginData.token);
+   const token = useSelector((state) => state.loginReducer.loginData.token);
    const [user, setUser] = useState('');
 
    useEffect(() => {
       const userId = async () => {
          try {
-            const config = { headers: { Authorization: `Bearer ${selectTokenId}` } };
+            const config = { headers: { Authorization: `Bearer ${token}` } };
             const result = await axios.get(`https://fazzpay.herokuapp.com/user/profile/${selectUserId}`, config);
             setUser(result.data.data);
             console.log(result);
