@@ -4,16 +4,19 @@ import { Person, Envelope, Lock, Eye, EyeSlashFill } from 'react-bootstrap-icons
 import Layout from '../../components/Layout';
 import Aside from '../../components/Aside';
 import Link from 'next/link';
-import axios from 'axios';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { registerAuthAction } from '../../redux/actionCreator/register';
+import { Modal, Button } from 'react-bootstrap';
 
 export default function Signup() {
+   const msg = useSelector((state) => state.registerReducer.registerData.msg);
    const [showPass, setShowPass] = useState(false);
    const [firstName, setFirstName] = useState('');
    const [lastName, setLastName] = useState('');
    const [email, setEmail] = useState('');
    const [password, setPassword] = useState('');
+   const [show, setShow] = useState(false);
+   const [isSuccess, setIsSuccess] = useState(false);
 
    const dispatch = useDispatch();
 
@@ -25,7 +28,12 @@ export default function Signup() {
          password,
       };
       dispatch(registerAuthAction(body));
+      handleShow();
+      setIsSuccess(true);
    };
+
+   const handleClose = () => setShow(false);
+   const handleShow = () => setShow(true);
 
    return (
       <>
@@ -98,6 +106,20 @@ export default function Signup() {
                </p>
             </main>
          </section>
+         <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+               <Modal.Title>tes</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>{isSuccess ? <p>{msg}</p> : <p>Register Failed!</p>}</Modal.Body>
+            <Modal.Footer>
+               <Button variant="secondary" onClick={handleClose}>
+                  Close
+               </Button>
+               <Button variant="primary" onClick={handleClose}>
+                  Save Changes
+               </Button>
+            </Modal.Footer>
+         </Modal>
       </>
    );
 }

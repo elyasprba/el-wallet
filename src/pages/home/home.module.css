@@ -1,0 +1,311 @@
+.container {
+   display: flex;
+}
+
+.maincontainer {
+   display: flex;
+   justify-content: space-between;
+   padding: 30px;
+   margin: 50px 150px 50px 25px;
+   background-color: #6379f4;
+   border-radius: 20px;
+   width: 130%;
+}
+
+.balancename {
+   font-weight: 400;
+   font-size: 18px;
+   line-height: 31px;
+   color: #e0e0e0;
+}
+
+.balanceprice {
+   font-weight: 700;
+   font-size: 30px;
+   line-height: 31px;
+   color: #ffffff;
+   margin: 10px 0px;
+}
+
+.balancephone {
+   font-weight: 400;
+   font-size: 18px;
+   line-height: 31px;
+   color: #e0e0e0;
+}
+
+.buttongruop {
+   display: flex;
+   flex-direction: column;
+   width: 30%;
+   cursor: pointer;
+}
+
+.transfer {
+   border: none;
+   border-radius: 15px;
+   height: 50px;
+   margin-bottom: 10px;
+   font-weight: 700;
+   font-size: 18px;
+   line-height: 25px;
+   color: #ffffff;
+}
+
+.bottomContainer {
+   margin: 30px;
+   display: flex;
+   gap: 2.5%;
+}
+
+.chartContainer {
+   background: #ffffff;
+   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+   border-radius: 25px;
+   padding: 20px 15%;
+}
+
+.chartTop {
+   display: flex;
+   justify-content: space-between;
+}
+
+.chartTop .title {
+   font-family: Nunito Sans;
+   font-size: 14px;
+   font-weight: 400;
+   line-height: 19px;
+   letter-spacing: 0em;
+   text-align: left;
+   color: #6a6a6a;
+   margin: 5px 0;
+}
+
+.chartTop .total {
+   font-family: Nunito Sans;
+   font-size: 18px;
+   font-weight: 700;
+   line-height: 25px;
+   letter-spacing: 0em;
+   text-align: left;
+   color: #3a3d42;
+}
+
+.income .icon {
+   width: 20px;
+   height: 20px;
+   color: #1ec15f;
+}
+
+.expense .icon {
+   width: 20px;
+   height: 20px;
+   color: #ff5b37;
+}
+
+.chartBottom {
+   display: flex;
+   height: 300px;
+   justify-content: space-around;
+}
+
+.dayContainer {
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-end;
+   align-items: center;
+   width: 50px;
+   gap: 10px;
+}
+
+.dayContainer .day {
+   font-family: Nunito Sans;
+   font-size: 14px;
+   font-weight: 400;
+   line-height: 19px;
+   letter-spacing: 0em;
+   text-align: left;
+
+   color: #8f8f8f;
+}
+
+.dayContainer .bar {
+   background: #6379f4;
+   border-radius: 15px;
+   width: 15px;
+}
+
+.historyContainer {
+   padding: 20px 8%;
+   width: 50%;
+   background: #ffffff;
+   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+   border-radius: 25px;
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+}
+
+.historyContainer .titleContainer {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.historyContainer .title {
+   font-family: Nunito Sans;
+   font-size: 18px;
+   font-weight: 700;
+   line-height: 25px;
+   letter-spacing: 0em;
+   text-align: left;
+   color: #3a3d42;
+}
+
+.historyContainer .seeAll {
+   font-family: Nunito Sans;
+   font-size: 14px;
+   font-weight: 600;
+   line-height: 19px;
+   letter-spacing: 0em;
+   text-align: left;
+   color: #6379f4;
+   cursor: pointer;
+}
+
+.transactionContainer {
+   display: flex;
+   flex-direction: column;
+   gap: 25px;
+}
+
+.transactionContainer .item {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+
+.pictNameContainer {
+   display: flex;
+   gap: 10px;
+}
+.transactionContainer .profPictContainer {
+   width: 50px;
+   height: 50px;
+}
+
+.profPict {
+   width: 50px;
+   height: 50px;
+   object-fit: cover;
+   object-position: 50% 50%;
+   border-radius: 10px;
+}
+
+.transactionContainer .nameContainer {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+}
+
+.transactionContainer .name {
+   font-family: Nunito Sans;
+   font-size: 16px;
+   font-weight: 700;
+   line-height: 22px;
+   letter-spacing: 0em;
+   text-align: left;
+   color: #4d4b57;
+}
+
+.transactionContainer .status {
+   font-family: Nunito Sans;
+   font-size: 14px;
+   font-weight: 400;
+   line-height: 19px;
+   letter-spacing: 0em;
+   text-align: left;
+   color: #7a7886;
+}
+.transactionContainer .nominal {
+   font-family: Nunito Sans;
+   font-size: 16px;
+   font-weight: 700;
+   line-height: 22px;
+   letter-spacing: 0em;
+   text-align: right;
+}
+
+.transactionContainer .in {
+   color: #1ec15f;
+}
+.transactionContainer .out {
+   color: #ff5b37;
+}
+
+.modalHeader {
+   font-family: Nunito Sans;
+   font-size: 18px;
+   font-weight: 700;
+   line-height: 25px;
+   letter-spacing: 0em;
+   text-align: left;
+}
+
+.modalBody {
+   font-family: Nunito Sans;
+   font-size: 16px;
+   font-weight: 400;
+   line-height: 30px;
+   letter-spacing: 0em;
+   text-align: center;
+}
+
+.inputTopUpContainer {
+   margin-top: 20px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border: 1px solid rgba(169, 169, 169, 0.6);
+   box-shadow: 0px 10px 75px rgba(147, 147, 147, 0.1);
+   border-radius: 10px;
+   height: 60px;
+}
+
+.inputTopUp {
+   align-self: center;
+   border: none;
+   border-bottom: 1px solid rgba(169, 169, 169, 0.4);
+   font-family: Nunito Sans;
+   font-size: 18px;
+   font-weight: 400;
+   line-height: 25px;
+   letter-spacing: 0em;
+   text-align: center;
+}
+
+.inputTopUp:focus {
+   outline: none;
+}
+
+.inputTopUp::-webkit-outer-spin-button,
+.inputTopUp::-webkit-inner-spin-button {
+   -webkit-appearance: none;
+   margin: 0;
+}
+
+.modalPrimaryButton {
+   font-family: Nunito Sans;
+   font-size: 18px;
+   font-weight: 400;
+   line-height: 25px;
+   letter-spacing: 0em;
+   text-align: center;
+
+   background: #6379f4;
+   color: #ffffff;
+}
+
+.modalPrimaryButton a {
+   color: #ffffff;
+}

@@ -28,12 +28,14 @@
 }
 
 .nameUser {
+   margin: 0;
    font-weight: 700;
    color: #3a3d42;
    font-size: 18px;
 }
 
 .nameNumber {
+   margin: 0;
    color: #3a3d42e5;
    font-size: 13px;
    line-height: 20px;

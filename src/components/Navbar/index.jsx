@@ -1,29 +1,23 @@
 import style from './navbar.module.css';
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserbyIdAction } from '../../redux/actionCreator/userInfo';
+import Loading from '../Loading';
 
 export default function Navbar() {
-   const selectUserId = useSelector((state) => state.loginReducer.loginData.id);
+   const id = useSelector((state) => state.loginReducer.loginData.id);
    const token = useSelector((state) => state.loginReducer.loginData.token);
-   const [user, setUser] = useState('');
+   const firstName = useSelector((state) => state.userInfoReducer.userInfo.firstName);
+   const lastName = useSelector((state) => state.userInfoReducer.userInfo.lastName);
+   const noTelp = useSelector((state) => state.userInfoReducer.userInfo.noTelp);
+   const [isLoading, setIsLoading] = useState(false);
+
+   const dispatch = useDispatch();
 
    useEffect(() => {
-      const userId = async () => {
-         try {
-            const config = { headers: { Authorization: `Bearer ${token}` } };
-            const result = await axios.get(`https://fazzpay.herokuapp.com/user/profile/${selectUserId}`, config);
-            setUser(result.data.data);
-            console.log(result);
-         } catch (error) {
-            console.log(error);
-         }
-      };
-      userId();
+      dispatch(getUserbyIdAction(id, token));
    }, []);
-
-   console.log(user);
 
    return (
       <>
@@ -37,8 +31,8 @@ export default function Navbar() {
                      <Image src={require('../../assets/img.png')} alt="img" width={40} height={40} />
                   </div>
                   <div className={style.nameInfo}>
-                     <p className={style.nameUser}>{`${user.firstName} ${user.lastName}`}</p>
-                     <p className={style.nameNumber}>{`${user.noTelp}`}</p>
+                     <p className={style.nameUser}>{`${firstName ? firstName : 'tes'} ${lastName ? lastName : 'tes'}`}</p>
+                     <p className={style.nameNumber}>{`${noTelp ? noTelp : 'tes'}`}</p>
                   </div>
                   <div>
                      <Image src={require('../../assets/vector/bel.png')} alt="img" width={30} height={30} />

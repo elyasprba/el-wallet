@@ -1,18 +1,18 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './login.module.css';
 import { Envelope, Lock, Eye, EyeSlashFill } from 'react-bootstrap-icons';
 import Layout from '../../components/Layout';
 import Aside from '../../components/Aside';
 import Link from 'next/link';
 import { loginAuthAction } from '../../redux/actionCreator/login';
+import Loading from '../../components/Loading';
 
 export default function Signup() {
    const [email, setEmail] = useState('');
    const [password, setPassword] = useState('');
    const [showPass, setShowPass] = useState(false);
-   // const [msgSuccess, setMsgSuccess] = useState('');
-   // const [msgError, setMsgError] = useState('');
+   const [isLoading, setIsLoading] = useState(false);
 
    const dispatch = useDispatch();
 
@@ -24,6 +24,8 @@ export default function Signup() {
       dispatch(loginAuthAction(body))
          .then((result) => {
             console.log(result);
+            setIsLoading(true);
+
             // setMsgSuccess(result.data.msg);
          })
          .catch((error) => {
@@ -31,10 +33,12 @@ export default function Signup() {
             // setMsgError(error.response.data);c
             console.log(error);
          });
+      setIsLoading(false);
    };
 
    return (
       <>
+         {isLoading && <Loading />}
          <Layout title="Login" />
          <section className={styles.container}>
             <Aside />
@@ -78,9 +82,11 @@ export default function Signup() {
                         <p className={styles.forgotpassword}>Forgot password?</p>
                      </Link>
                   </div>
-                  <button className={styles.signupbutton} onClick={login}>
-                     Login
-                  </button>
+                  <Link href="/home">
+                     <button className={styles.signupbutton} onClick={login}>
+                        Login
+                     </button>
+                  </Link>
                </div>
                <p className={styles.descsignup}>
                   Don’t have an account? Let’s <Link href="/signup">Sign Up</Link>

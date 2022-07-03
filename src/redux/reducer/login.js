@@ -1,4 +1,4 @@
-import { loginAuth, PENDING, FULFILLED, REJECTED } from '../actionCreator/actionString';
+import { loginAuth, logoutAuth, PENDING, FULFILLED, REJECTED } from '../actionCreator/actionString';
 
 const initialState = {
    loginData: {},
@@ -16,6 +16,8 @@ const loginReducer = (state = initialState, action) => {
          return { ...state, loginData: action.payload.data.data, isLoading: false };
       case loginAuth + REJECTED:
          return { ...state, isLoading: false, err: action.payload };
+      case logoutAuth:
+         return initialState;
       default:
          return state;
    }
