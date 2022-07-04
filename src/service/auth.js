@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://fazzpay.herokuapp.com';
+const BASE_URL = process.env.NEXT_PUBLIC_HOST;
 
 export const authRegisterAxios = (body) => {
    const URL = `${BASE_URL}/auth/register`;
@@ -16,9 +16,3 @@ export const authLogoutAxios = () => {
    const URL = `${BASE_URL}/auth/logout`;
    return axios.post(URL);
 };
-
-// export const getUserIdAxios = (id, token) => {
-//    const res = config(token);
-//    const URL = `${BASE_URL}/user/profile/${id}`;
-//    return axios.get(URL, res);
-// };

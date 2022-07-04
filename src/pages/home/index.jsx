@@ -4,11 +4,12 @@ import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import Dashboard from '../../components/Dashboard';
 import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { ArrowUpShort, PlusLg, ArrowDown, ArrowUp } from 'react-bootstrap-icons';
 import Loading from '../../components/Loading';
 import axios from 'axios';
 import Link from 'next/link';
+import { getUserbyIdAction } from '../../redux/actionCreator/userInfo';
 
 export default function Home() {
    const id = useSelector((state) => state.loginReducer.loginData.id);
@@ -19,6 +20,12 @@ export default function Home() {
    const [isLoading, setIsLoading] = useState(false);
    const [dashboard, setDashboard] = useState({});
    const { listIncome = [], listExpense = [] } = dashboard;
+
+   const dispatch = useDispatch();
+
+   useEffect(() => {
+      dispatch(getUserbyIdAction(id, token));
+   }, [dispatch(getUserbyIdAction(id, token))]);
 
    useEffect(() => {
       const getDashboard = async () => {

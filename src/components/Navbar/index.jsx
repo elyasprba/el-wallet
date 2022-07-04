@@ -2,22 +2,13 @@ import style from './navbar.module.css';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUserbyIdAction } from '../../redux/actionCreator/userInfo';
 import Loading from '../Loading';
 
 export default function Navbar() {
-   const id = useSelector((state) => state.loginReducer.loginData.id);
-   const token = useSelector((state) => state.loginReducer.loginData.token);
    const firstName = useSelector((state) => state.userInfoReducer.userInfo.firstName) || 'TES';
    const lastName = useSelector((state) => state.userInfoReducer.userInfo.lastName) || 'TES';
    const noTelp = useSelector((state) => state.userInfoReducer.userInfo.noTelp) || 'TES';
    const [isLoading, setIsLoading] = useState(false);
-
-   const dispatch = useDispatch();
-
-   useEffect(() => {
-      dispatch(getUserbyIdAction(id, token));
-   }, []);
 
    return (
       <>

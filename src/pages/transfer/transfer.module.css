@@ -1,0 +1,152 @@
+.container {
+   display: flex;
+}
+
+.maincontent {
+   margin: 50px;
+   padding: 50px;
+   background: #ffffff;
+   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+   border-radius: 15px;
+   width: 60%;
+}
+
+.mainTitle {
+   font-weight: 700;
+   font-size: 18px;
+   line-height: 25px;
+   color: #3a3d42;
+}
+
+.forminput input {
+   width: 100%;
+   height: 50px;
+   border-radius: 10px;
+   border: 1px solid #3a3d42;
+}
+
+.forminput input:focus {
+   outline: none;
+}
+
+.userTransfer {
+   display: flex;
+   column-gap: 20px;
+   margin-top: 25px;
+}
+
+.name {
+   font-weight: 700;
+   font-size: 18px;
+   line-height: 25px;
+   color: #4d4b57;
+}
+
+.phone {
+   margin: 0;
+   font-weight: 400;
+   font-size: 16px;
+   line-height: 22px;
+   color: #7a7886;
+}
+
+/* User detail */
+
+.userdetailinfo {
+   background: #ffffff;
+   padding: 20px;
+   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+   border-radius: 10px;
+   display: flex;
+   column-gap: 20px;
+   height: 100px;
+}
+
+.desctransfer {
+   padding-top: 30px;
+   font-weight: 400;
+   font-size: 16px;
+   line-height: 28px;
+   color: #7a7886;
+}
+
+.transferinput {
+   margin-top: 100px;
+   margin-bottom: 30px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.transferinput input {
+   font-family: Nunito Sans;
+   font-size: 42px;
+   font-weight: 700;
+   line-height: 56px;
+   letter-spacing: 0px;
+   text-align: center;
+   border: none;
+   color: #6379f4;
+}
+
+.transferinput input:focus {
+   outline: none;
+}
+
+.transferinput input::-webkit-outer-spin-button,
+.transferinput input::-webkit-inner-spin-button {
+   -webkit-appearance: none;
+   margin: 0;
+}
+
+.pricetransfer {
+   font-family: Nunito Sans;
+   font-size: 16px;
+   font-weight: 700;
+   line-height: 22px;
+   letter-spacing: 0em;
+   text-align: center;
+   color: #3a3d42;
+}
+
+.noteContainer {
+   margin-top: 30px;
+   height: 50px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.noteContainer .note {
+   border: none;
+   border-bottom: 1px solid rgba(169, 169, 169, 0.6);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.buttonContainer {
+   display: flex;
+   justify-content: flex-end;
+}
+
+.continueButton {
+   border: none;
+   margin-top: 50px;
+   width: 150px;
+   height: 50px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background: #6379f4;
+   color: #ffffff;
+   box-shadow: 0px 6px 75px rgba(100, 87, 87, 0.05);
+   border-radius: 12px;
+   font-family: Nunito Sans;
+   font-size: 18px;
+   font-weight: 700;
+   line-height: 25px;
+   letter-spacing: 0em;
+   text-align: center;
+   cursor: pointer;
+}

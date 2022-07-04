@@ -66,7 +66,7 @@ export default function Dashboard(props) {
                </div>
                <div className={styles.main}>
                   <ArrowUpShort height={30} width={30} />
-                  <Link href="#">
+                  <Link href="/transfer">
                      <div className={props.isActive === 'Transfer' ? styles.dashboardActive : styles.dashboard}>Transfer</div>
                   </Link>
                </div>
