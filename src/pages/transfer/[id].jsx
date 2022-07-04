@@ -9,7 +9,7 @@ import Image from 'next/image';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 
-export default function userDetails() {
+export default function UserDetails() {
    const token = useSelector((state) => state.loginReducer.loginData.token);
    const [user, setUser] = useState([]);
    const [transferInfo, setTransferInfo] = useState('');
