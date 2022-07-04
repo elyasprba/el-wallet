@@ -1,4 +1,3 @@
-// import { getUserIdAxios } from '../../service/auth';
 import { userInfo, deleteUserInfo } from './actionString';
 import axios from 'axios';
 

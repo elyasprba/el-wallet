@@ -8,9 +8,9 @@ import Loading from '../Loading';
 export default function Navbar() {
    const id = useSelector((state) => state.loginReducer.loginData.id);
    const token = useSelector((state) => state.loginReducer.loginData.token);
-   const firstName = useSelector((state) => state.userInfoReducer.userInfo.firstName);
-   const lastName = useSelector((state) => state.userInfoReducer.userInfo.lastName);
-   const noTelp = useSelector((state) => state.userInfoReducer.userInfo.noTelp);
+   const firstName = useSelector((state) => state.userInfoReducer.userInfo.firstName) || 'TES';
+   const lastName = useSelector((state) => state.userInfoReducer.userInfo.lastName) || 'TES';
+   const noTelp = useSelector((state) => state.userInfoReducer.userInfo.noTelp) || 'TES';
    const [isLoading, setIsLoading] = useState(false);
 
    const dispatch = useDispatch();
@@ -31,7 +31,9 @@ export default function Navbar() {
                      <Image src={require('../../assets/img.png')} alt="img" width={40} height={40} />
                   </div>
                   <div className={style.nameInfo}>
-                     <p className={style.nameUser}>{`${firstName ? firstName : 'tes'} ${lastName ? lastName : 'tes'}`}</p>
+                     <h1 className={style.nameUser}>
+                        {firstName} {lastName}
+                     </h1>
                      <p className={style.nameNumber}>{`${noTelp ? noTelp : 'tes'}`}</p>
                   </div>
                   <div>

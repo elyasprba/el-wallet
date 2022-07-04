@@ -3,16 +3,35 @@ import Layout from '../../components/Layout';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import Dashboard from '../../components/Dashboard';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { ArrowUpShort, PlusLg, ArrowDown, ArrowUp } from 'react-bootstrap-icons';
 import Loading from '../../components/Loading';
+import axios from 'axios';
+import Link from 'next/link';
 
 export default function Home() {
+   const id = useSelector((state) => state.loginReducer.loginData.id);
+   const token = useSelector((state) => state.loginReducer.loginData.token);
    const noTelp = useSelector((state) => state.userInfoReducer.userInfo.noTelp);
    const balance = useSelector((state) => state.userInfoReducer.userInfo.balance);
    const [isActive, setIsActive] = useState('home');
    const [isLoading, setIsLoading] = useState(false);
+   const [dashboard, setDashboard] = useState({});
+   const { listIncome = [], listExpense = [] } = dashboard;
+
+   useEffect(() => {
+      const getDashboard = async () => {
+         try {
+            const config = { headers: { Authorization: `Bearer ${token}` } };
+            const result = await axios.get(`https://fazzpay.herokuapp.com/dashboard/${id}`, config);
+            setDashboard(result.data.data);
+         } catch (error) {
+            console.log(error);
+         }
+      };
+      getDashboard();
+   }, []);
 
    return (
       <>
@@ -24,7 +43,7 @@ export default function Home() {
                <div className={styles.maincontainer}>
                   <div>
                      <p className={styles.balancename}>Balance</p>
-                     <p className={styles.balanceprice}>Rp{balance ? balance : 'tes'}</p>
+                     <p className={styles.balanceprice}>Rp{balance ? balance : '0'}</p>
                      <p className={styles.balancephone}>{noTelp ? noTelp : 'Please enter phone number'}</p>
                   </div>
                   <div className={styles.buttongruop}>
@@ -45,49 +64,29 @@ export default function Home() {
                            <div className={styles.income}>
                               <ArrowDown className={styles.icon} />
                               <div className={styles.title}>Income</div>
-                              <div className={styles.total}>Rp2.120.000</div>
+                              <div className={styles.total}>Rp {dashboard.totalIncome ? dashboard.totalIncome : '0'}</div>
                            </div>
                            <div className={styles.expense}>
                               <ArrowUp className={styles.icon} />
                               <div className={styles.title}>Expense</div>
-                              <div className={styles.total}>Rp1.560.000</div>
+                              <div className={styles.total}>Rp {dashboard.totalExpense ? dashboard.totalExpense : '0'}</div>
                            </div>
                         </div>
                         <div className={styles.chartBottom}>
-                           <div className={styles.dayContainer}>
-                              <div className={styles.bar} style={{ height: '80%' }}></div>
-                              <div className={styles.day}>Sat</div>
-                           </div>
-                           <div className={styles.dayContainer}>
-                              <div className={styles.bar} style={{ height: '80%' }}></div>
-                              <div className={styles.day}>Sun</div>
-                           </div>
-                           <div className={styles.dayContainer}>
-                              <div className={styles.bar} style={{ height: '80%' }}></div>
-                              <div className={styles.day}>Mon</div>
-                           </div>
-                           <div className={styles.dayContainer}>
-                              <div className={styles.bar} style={{ height: '80%' }}></div>
-                              <div className={styles.day}>Tue</div>
-                           </div>
-                           <div className={styles.dayContainer}>
-                              <div className={styles.bar} style={{ height: '80%' }}></div>
-                              <div className={styles.day}>Wed</div>
-                           </div>
-                           <div className={styles.dayContainer}>
-                              <div className={styles.bar} style={{ height: '80%' }}></div>
-                              <div className={styles.day}>Thu</div>
-                           </div>
-                           <div className={styles.dayContainer}>
-                              <div className={styles.bar} style={{ height: '80%' }}></div>
-                              <div className={styles.day}>Fri</div>
-                           </div>
+                           {listIncome.map((dashboard) => (
+                              <div className={styles.dayContainer}>
+                                 <div className={styles.bar} style={{ height: `${dashboard.total}px` }}></div>
+                                 <div className={styles.day}>{dashboard.day}</div>
+                              </div>
+                           ))}
                         </div>
                      </section>
                      <section className={styles.historyContainer}>
                         <div className={styles.titleContainer}>
                            <div className={styles.title}>Transaction History</div>
-                           <div className={styles.seeAll}>See all</div>
+                           <Link href="/history">
+                              <div className={styles.seeAll}>See all</div>
+                           </Link>
                         </div>
                         <div className={styles.transactionContainer}>
                            <div className={styles.item}>
