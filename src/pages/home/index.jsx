@@ -81,7 +81,7 @@ export default function Home() {
                         </div>
                         <div className={styles.chartBottom}>
                            {listIncome.map((dashboard) => (
-                              <div className={styles.dayContainer}>
+                              <div className={styles.dayContainer} key={'123'}>
                                  <div className={styles.bar} style={{ height: `${dashboard.total}px` }}></div>
                                  <div className={styles.day}>{dashboard.day}</div>
                               </div>
