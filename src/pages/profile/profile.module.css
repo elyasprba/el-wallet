@@ -1,0 +1,59 @@
+.container {
+   display: flex;
+}
+
+.maincontainer {
+   margin: 50px;
+   padding: 50px;
+   background: #ffffff;
+   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+   border-radius: 15px;
+   width: 60%;
+}
+
+.userinfo {
+   text-align: center;
+}
+
+.name {
+   margin: 0;
+   font-weight: 700;
+   font-size: 24px;
+   line-height: 32px;
+   text-align: center;
+   color: #4d4b57;
+}
+
+.phone {
+   margin: 0;
+   font-weight: 400;
+   font-size: 16px;
+   line-height: 27px;
+   text-align: center;
+   color: #7a7886;
+}
+
+.maininformation {
+   display: flex;
+   margin-top: 40px;
+   justify-content: center;
+   align-items: center;
+}
+
+.btninformation {
+   display: flex;
+   justify-content: space-between;
+   background-color: #e5e8ed;
+   padding: 10px;
+   height: 50px;
+   width: 50%;
+   border-radius: 15px;
+   cursor: pointer;
+}
+
+.textinformation {
+   font-weight: 700;
+   font-size: 16px;
+   line-height: 28px;
+   color: #4d4b57;
+}

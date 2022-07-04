@@ -13,6 +13,8 @@ export default function Transfer() {
    const token = useSelector((state) => state.loginReducer.loginData.token);
    const [transfer, setTransfer] = useState([]);
    const [search, setSearch] = useState('');
+   const [isActive, setIsActive] = useState('transfer');
+
    const router = useRouter();
 
    useEffect(() => {
@@ -25,7 +27,6 @@ export default function Transfer() {
             }
             const result = await axios.get(url, config);
             setTransfer(result.data.data);
-            console.log(result);
          } catch (error) {
             console.log(error);
          }
@@ -38,7 +39,7 @@ export default function Transfer() {
          <Layout title="Transfer" />
          <Navbar />
          <section className={styles.container}>
-            <Dashboard />
+            <Dashboard isActive={isActive} />
             <section className={styles.maincontent}>
                <p className={styles.mainTitle}>Search Receiver</p>
                <div className={styles.forminput}>

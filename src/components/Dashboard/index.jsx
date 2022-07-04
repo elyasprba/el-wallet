@@ -67,7 +67,7 @@ export default function Dashboard(props) {
                <div className={styles.main}>
                   <ArrowUpShort height={30} width={30} />
                   <Link href="/transfer">
-                     <div className={props.isActive === 'Transfer' ? styles.dashboardActive : styles.dashboard}>Transfer</div>
+                     <div className={props.isActive === 'transfer' ? styles.dashboardActive : styles.dashboard}>Transfer</div>
                   </Link>
                </div>
                <div className={styles.main}>
@@ -78,7 +78,7 @@ export default function Dashboard(props) {
                </div>
                <div className={styles.main}>
                   <Person height={30} width={30} />
-                  <Link href="#">
+                  <Link href="/profile">
                      <div className={props.isActive === 'profile' ? styles.dashboardActive : styles.dashboard}>Profile</div>
                   </Link>
                </div>

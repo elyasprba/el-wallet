@@ -51,7 +51,7 @@ export default function Home() {
                   <div>
                      <p className={styles.balancename}>Balance</p>
                      <p className={styles.balanceprice}>Rp{balance ? balance : '0'}</p>
-                     <p className={styles.balancephone}>{noTelp ? noTelp : 'Please enter phone number'}</p>
+                     <p className={styles.balancephone}>{noTelp ? noTelp : 'Phone number does not exist'}</p>
                   </div>
                   <div className={styles.buttongruop}>
                      <button className={styles.transfer}>

@@ -15,6 +15,7 @@ export default function userDetails() {
    const [transferInfo, setTransferInfo] = useState('');
    const [amount, setAmount] = useState('');
    const [notes, setNotes] = useState('');
+   const [isActive, setIsActive] = useState('transfer');
 
    const router = useRouter();
 
@@ -55,7 +56,7 @@ export default function userDetails() {
          <Layout title="Transfer" />
          <Navbar />
          <section className={styles.container}>
-            <Dashboard />
+            <Dashboard isActive={isActive} />
             <section className={styles.maincontent}>
                <p className={styles.mainTitle}>Transfer Money</p>
                <div className={styles.userdetailinfo}>
