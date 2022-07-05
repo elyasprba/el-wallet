@@ -16,7 +16,7 @@ export default function History() {
       const getHistory = async () => {
          try {
             const config = { headers: { Authorization: `Bearer ${token}` } };
-            const result = await axios.get(`https://fazzpay.herokuapp.com/transaction/history?page=1&limit=6&filter=week`, config);
+            const result = await axios.get(`${process.env.NEXT_PUBLIC_HOST}/transaction/history?page=1&limit=6&filter=week`, config);
             setHistory(result.data.data);
          } catch (error) {
             console.log(error);

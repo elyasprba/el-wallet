@@ -5,9 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import Loading from '../Loading';
 
 export default function Navbar() {
-   const firstName = useSelector((state) => state.userInfoReducer.userInfo.firstName) || 'TES';
-   const lastName = useSelector((state) => state.userInfoReducer.userInfo.lastName) || 'TES';
-   const noTelp = useSelector((state) => state.userInfoReducer.userInfo.noTelp) || 'TES';
+   const firstName = useSelector((state) => state.userInfoReducer.userInfo.firstName);
+   const lastName = useSelector((state) => state.userInfoReducer.userInfo.lastName);
+   const noTelp = useSelector((state) => state.userInfoReducer.userInfo.noTelp);
    const [isLoading, setIsLoading] = useState(false);
 
    return (
@@ -23,7 +23,7 @@ export default function Navbar() {
                   </div>
                   <div className={style.nameInfo}>
                      <h1 className={style.nameUser}>
-                        {firstName} {lastName}
+                        {firstName || 'TES'} {lastName || 'TES'}
                      </h1>
                      <p className={style.nameNumber}>{`${noTelp ? noTelp : 'tes'}`}</p>
                   </div>

@@ -21,7 +21,7 @@ export default function Transfer() {
       const getUser = async () => {
          try {
             const config = { headers: { Authorization: `Bearer ${token}` } };
-            let url = 'https://fazzpay.herokuapp.com/user?page=1&limit=5';
+            let url = `${process.env.NEXT_PUBLIC_HOST}/user?page=1&limit=5`;
             if (search !== '') {
                url += `&search=${search}`;
             }

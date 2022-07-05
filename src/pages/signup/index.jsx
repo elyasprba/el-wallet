@@ -9,13 +9,14 @@ import { registerAuthAction } from '../../redux/actionCreator/register';
 import { Modal, Button } from 'react-bootstrap';
 
 export default function Signup() {
-   const msg = useSelector((state) => state.registerReducer.registerData.msg);
    const [showPass, setShowPass] = useState(false);
    const [firstName, setFirstName] = useState('');
    const [lastName, setLastName] = useState('');
    const [email, setEmail] = useState('');
    const [password, setPassword] = useState('');
    const [show, setShow] = useState(false);
+   const [successMsg, setSuccessMsg] = useState('');
+   const [errorMsg, setErrorMsg] = useState('');
    const [isSuccess, setIsSuccess] = useState(false);
 
    const dispatch = useDispatch();
@@ -27,9 +28,18 @@ export default function Signup() {
          email,
          password,
       };
-      dispatch(registerAuthAction(body));
+      dispatch(registerAuthAction(body))
+         .then((res) => {
+            // console.log(res.value.data.msg);
+            setSuccessMsg(res.value.data.msg);
+            setIsSuccess(true);
+         })
+         .catch((err) => {
+            // console.log(err.response.data.msg);
+            setErrorMsg(err.response.data.msg);
+            setIsSuccess(false);
+         });
       handleShow();
-      setIsSuccess(true);
    };
 
    const handleClose = () => setShow(false);
@@ -108,16 +118,28 @@ export default function Signup() {
          </section>
          <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
-               <Modal.Title>tes</Modal.Title>
+               <Modal.Title>Register</Modal.Title>
             </Modal.Header>
-            <Modal.Body>{isSuccess ? <p>{msg}</p> : <p>Register Failed!</p>}</Modal.Body>
+            <Modal.Body>{isSuccess ? `${successMsg} Please cek your email!` : `${errorMsg}`}</Modal.Body>
             <Modal.Footer>
-               <Button variant="secondary" onClick={handleClose}>
-                  Close
-               </Button>
-               <Button variant="primary" onClick={handleClose}>
-                  Save Changes
-               </Button>
+               {isSuccess ? (
+                  <>
+                     <Button variant="secondary" onClick={handleClose}>
+                        Close
+                     </Button>
+                     <Link href="/login">
+                        <Button variant="primary" onClick={handleClose}>
+                           Oke
+                        </Button>
+                     </Link>
+                  </>
+               ) : (
+                  <>
+                     <Button variant="secondary" onClick={handleClose}>
+                        Close
+                     </Button>
+                  </>
+               )}
             </Modal.Footer>
          </Modal>
       </>

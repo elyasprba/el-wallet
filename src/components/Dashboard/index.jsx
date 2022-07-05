@@ -8,17 +8,20 @@ import { useSelector, useDispatch } from 'react-redux';
 import { logoutAuthAction } from '../../redux/actionCreator/login';
 import { deleteUserInfoAction } from '../../redux/actionCreator/userInfo';
 import Loading from '../Loading';
+import { useRouter } from 'next/router';
 
 export default function Dashboard(props) {
    const token = useSelector((state) => state.loginReducer.loginData.token);
-   const [show, setShow] = useState(false);
+   const [show, setShow] = useState('');
    const [amount, setAmount] = useState(0);
    const [isSuccess, setIsSuccess] = useState(false);
    const [msg, setMsg] = useState('');
    const [redirectUrl, setRedirectUrl] = useState('');
    const [isLoading, setIsLoading] = useState(false);
+   const [showLogout, setShowLogout] = useState(false);
 
    const dispatch = useDispatch();
+   const router = useRouter();
 
    const handleClose = () => setShow(false);
    const handleShow = () => setShow(true);
@@ -29,26 +32,28 @@ export default function Dashboard(props) {
             amount,
          };
          const config = { headers: { Authorization: `Bearer ${token}` } };
-         const result = await axios.post(`https://fazzpay.herokuapp.com/transaction/top-up`, body, config);
+         const result = await axios.post(`${process.env.NEXT_PUBLIC_HOST}/transaction/top-up`, body, config);
          setMsg(result.data.msg);
-         setIsLoading(true);
+         // setIsLoading(true);
          setRedirectUrl(result.data.data.redirectUrl);
          setIsSuccess(true);
       } catch (error) {
          console.log(error);
       }
-      setIsLoading(false);
+      // setIsLoading(false);
    };
 
    const handleLogout = async () => {
       try {
          const config = { headers: { Authorization: `Bearer ${token}` } };
-         const result = await axios.post(`https://fazzpay.herokuapp.com/auth/logout`, config);
+         const result = await axios.post(`${process.env.NEXT_PUBLIC_HOST}/auth/logout`, config);
          dispatch(logoutAuthAction());
          dispatch(deleteUserInfoAction());
+         router.push('/');
          setIsLoading(true);
       } catch (error) {
          console.log(error);
+         setIsLoading(false);
       }
       setIsLoading(false);
    };
@@ -84,7 +89,7 @@ export default function Dashboard(props) {
                </div>
                <div className={styles.mainlogout}>
                   <BoxArrowRight height={30} width={30} />
-                  <div className={props.isActive === 'logout' ? styles.dashboardActive : styles.dashboard} onClick={handleLogout}>
+                  <div className={props.isActive === 'logout' ? styles.dashboardActive : styles.dashboard} onClick={() => setShowLogout(true)}>
                      Logout
                   </div>
                </div>
@@ -123,6 +128,20 @@ export default function Dashboard(props) {
                      Submit
                   </Button>
                )}
+            </Modal.Footer>
+         </Modal>
+         <Modal show={showLogout} onHide={() => setShowLogout(false)}>
+            <Modal.Header closeButton>
+               <Modal.Title>Log Out</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>Are You Sure?</Modal.Body>
+            <Modal.Footer>
+               <Button variant="primary" onClick={handleLogout}>
+                  Log Out
+               </Button>
+               <Button variant="secondary" onClick={() => setShowLogout(false)}>
+                  Cancel
+               </Button>
             </Modal.Footer>
          </Modal>
       </>

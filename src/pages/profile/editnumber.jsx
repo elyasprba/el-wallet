@@ -21,7 +21,7 @@ export default function EditNumber() {
          };
          const config = { headers: { Authorization: `Bearer ${token}` } };
          const result = await axios.patch(`${process.env.NEXT_PUBLIC_HOST}/user/profile/${id}`, body, config);
-         console.log('UPDATE NUMBER PHONE SUCCESS', result.data.data);
+         // console.log('UPDATE NUMBER PHONE SUCCESS', result.data.data);
       } catch (error) {
          console.log(error);
       }

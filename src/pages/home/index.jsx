@@ -31,7 +31,7 @@ export default function Home() {
       const getDashboard = async () => {
          try {
             const config = { headers: { Authorization: `Bearer ${token}` } };
-            const result = await axios.get(`https://fazzpay.herokuapp.com/dashboard/${id}`, config);
+            const result = await axios.get(`${process.env.NEXT_PUBLIC_HOST}/dashboard/${id}`, config);
             setDashboard(result.data.data);
          } catch (error) {
             console.log(error);
@@ -50,7 +50,7 @@ export default function Home() {
                <div className={styles.maincontainer}>
                   <div>
                      <p className={styles.balancename}>Balance</p>
-                     <p className={styles.balanceprice}>Rp{balance ? balance : '0'}</p>
+                     <p className={styles.balanceprice}>Rp{balance || '0'}</p>
                      <p className={styles.balancephone}>{noTelp ? noTelp : 'Phone number does not exist'}</p>
                   </div>
                   <div className={styles.buttongruop}>

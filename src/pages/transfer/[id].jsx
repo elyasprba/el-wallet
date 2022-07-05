@@ -24,7 +24,7 @@ export default function UserDetails() {
          try {
             const { id } = router.query;
             const config = { headers: { Authorization: `Bearer ${token}` } };
-            const result = await axios.get(`https://fazzpay.herokuapp.com/user/profile/${id}`, config);
+            const result = await axios.get(`${process.env.NEXT_PUBLIC_HOST}/user/profile/${id}`, config);
             setUser(result.data.data);
             // console.log('GET USER ID', result.data.data);
          } catch (error) {
@@ -43,7 +43,7 @@ export default function UserDetails() {
             notes,
          };
          const config = { headers: { Authorization: `Bearer ${token}` } };
-         const result = await axios.post(`https://fazzpay.herokuapp.com/transaction/transfer`, body, config);
+         const result = await axios.post(`${process.env.NEXT_PUBLIC_HOST}/transaction/transfer`, body, config);
          setTransferInfo(result.data.data.id);
          //  console.log('TRANSFER SUCCESS FROM ID', result.data.data.id);
       } catch (error) {

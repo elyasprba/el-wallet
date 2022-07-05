@@ -7,13 +7,19 @@ import Aside from '../../components/Aside';
 import Link from 'next/link';
 import { loginAuthAction } from '../../redux/actionCreator/login';
 import Loading from '../../components/Loading';
+import { Modal, Button } from 'react-bootstrap';
+import { useRouter } from 'next/router';
 
 export default function Signup() {
    const [email, setEmail] = useState('');
    const [password, setPassword] = useState('');
    const [showPass, setShowPass] = useState(false);
    const [isLoading, setIsLoading] = useState(false);
+   const [errorMsg, setErrorMsg] = useState('');
+   const [isSuccess, setIsSuccess] = useState(false);
+   const [show, setShow] = useState(false);
 
+   const router = useRouter();
    const dispatch = useDispatch();
 
    const login = () => {
@@ -22,16 +28,20 @@ export default function Signup() {
          password,
       };
       dispatch(loginAuthAction(body))
-         .then((result) => {
-            console.log(result);
+         .then((_) => {
+            // console.log(result.value.data.msg);
             setIsLoading(true);
-
-            // setMsgSuccess(result.data.msg);
+            // setIsSuccess(true);
+            router.push('/home');
          })
          .catch((error) => {
             // console.log(error.response.data.msg);
-            // setMsgError(error.response.data);c
-            console.log(error);
+            setErrorMsg(error.response.data.msg);
+            setIsLoading(false);
+            if (!isSuccess) {
+               router.push('/login');
+            }
+            setShow(true);
          });
       setIsLoading(false);
    };
@@ -82,17 +92,26 @@ export default function Signup() {
                         <p className={styles.forgotpassword}>Forgot password?</p>
                      </Link>
                   </div>
-                  <Link href="/home">
-                     <button className={styles.signupbutton} onClick={login}>
-                        Login
-                     </button>
-                  </Link>
+                  <button className={styles.signupbutton} onClick={login}>
+                     Login
+                  </button>
                </div>
                <p className={styles.descsignup}>
                   Don’t have an account? Let’s <Link href="/signup">Sign Up</Link>
                </p>
             </main>
          </section>
+         <Modal show={show} onHide={() => setShowPass(false)}>
+            <Modal.Header closeButton>
+               <Modal.Title>Login</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>{isSuccess ? <></> : `${errorMsg}`}</Modal.Body>
+            <Modal.Footer>
+               <Button variant="secondary" onClick={() => setShow(false)}>
+                  Close
+               </Button>
+            </Modal.Footer>
+         </Modal>
       </>
    );
 }

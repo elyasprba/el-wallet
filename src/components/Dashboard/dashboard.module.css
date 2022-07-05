@@ -27,6 +27,7 @@
 .mainlogout {
    display: flex;
    margin-top: 330px;
+   cursor: pointer;
 }
 
 .logout {

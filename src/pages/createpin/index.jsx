@@ -22,7 +22,7 @@ export default function CreatePin() {
             pin,
          };
          const config = { headers: { Authorization: `Bearer ${token}` } };
-         const result = await axios.patch(`https://fazzpay.herokuapp.com/user/pin/${selectUserId}`, body, config);
+         const result = await axios.patch(`${process.env.NEXT_PUBLIC_HOST}/user/pin/${selectUserId}`, body, config);
          alert(result.data.msg);
       } catch (error) {
          console.log(error);
