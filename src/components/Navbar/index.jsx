@@ -1,7 +1,7 @@
 import style from './navbar.module.css';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import Loading from '../Loading';
 
 export default function Navbar() {
